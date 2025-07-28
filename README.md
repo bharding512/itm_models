@@ -24,7 +24,23 @@ pip install -e .
 
 ## Usage
 
-See examples/msis_example.ipynb
+See examples directory for more.
 
+```
+# Run an altitude profile of MSIS
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+ds = itm_models.msis(
+    time=pd.to_datetime('2025-07-24 12:59'),
+    lat=0,
+    lon=0,
+    alt=np.linspace(80,300,100),
+)
+
+plt.figure()
+ds.O.plot(xscale='log', y='alt')
+```
 
