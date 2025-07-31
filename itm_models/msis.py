@@ -16,10 +16,10 @@ def msis(time, lat, lon, alt, f107=None, f107a=None, **kwargs):
     
     if f107 is not None and np.isscalar(f107):
         # Broadcast to shape of t if needed. Otherwise
-        f107 = f107 * np.ones_like(t)
+        f107 = f107 * np.ones(len(t))
         
     if f107a is not None and np.isscalar(f107a):
-        f107a = f107a * np.ones_like(t)
+        f107a = f107a * np.ones(len(t))
         
     
     result = pymsis.calculate(
@@ -29,7 +29,7 @@ def msis(time, lat, lon, alt, f107=None, f107a=None, **kwargs):
         alt,
         f107s=f107,
         f107as=f107a,
-        # **kwargs
+        **kwargs
     )
     
     variables = pymsis.Variable
