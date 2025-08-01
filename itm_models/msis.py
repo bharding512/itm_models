@@ -24,8 +24,8 @@ def msis(time, lat, lon, alt, f107=None, f107a=None, **kwargs):
     
     result = pymsis.calculate(
         t,
-        lat,
         lon,
+        lat,
         alt,
         f107s=f107,
         f107as=f107a,
@@ -35,10 +35,9 @@ def msis(time, lat, lon, alt, f107=None, f107a=None, **kwargs):
     variables = pymsis.Variable
     
     if result.ndim == 5:
-        # (var, time, alt, lat, lon)
         ds =  xr.Dataset(
             {
-                v.name: (("time", "lat", "lon", "alt"), result[:,:,:,:,i]) for i, v in enumerate(variables)
+                v.name: (("time", "lon", "lat", "alt"), result[:,:,:,:,i]) for i, v in enumerate(variables)
             },
             coords={
                 "time": t,
@@ -49,7 +48,6 @@ def msis(time, lat, lon, alt, f107=None, f107a=None, **kwargs):
         )
     
     elif result.ndim == 2:
-        # (var, time)
         ds = xr.Dataset(
             {
                 v.name: (("time",), result[:,i]) for i, v in enumerate(variables)
