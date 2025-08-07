@@ -32,6 +32,7 @@ See examples directory for more.
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import itm_models
 
 ds = itm_models.msis(
     time=pd.to_datetime('2025-07-24 12:59'),
