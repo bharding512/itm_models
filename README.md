@@ -1,6 +1,9 @@
 # itm_models
 
-Simple wrapper for other Python wrappers of ITM models like MSIS, IRI, and IGRF.
+Simple wrapper for other Python wrappers of ITM models:
+- MSIS (implemented using pymsis)
+- IRI (not yet implemented, plan to use PyIRI)
+- IGRF (not yet implemented)
 
 At least for now, this is intended as a simple personal codebase to replace the functionality of pyglow, and provide a uniform xarray-based interface.
 
